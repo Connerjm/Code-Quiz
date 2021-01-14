@@ -36,3 +36,5 @@ Project is created with:
 ## Images
 
 ## To Do
+
+- [ ] Add a difficulty setting.

@@ -1,0 +1,60 @@
+/* Styling for the entire document. */
+*
+{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after
+{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+body
+{
+    font-family: Helvetica, sans-serif;
+}
+
+/* Styling the header. */
+header
+{
+    margin-bottom: 10px;
+    border-bottom: 1px solid #111111;
+    padding: 15px;
+    background: #EEEEEE;
+}
+
+#viewscores
+{
+    float: left;
+}
+
+#timer
+{
+    float: right;
+}
+
+/* Styling the content in the panel. */
+#contentpanel
+{
+    margin: auto;
+    width: 600px;
+    height: 450px;
+    padding: 15px;
+    border: 1px solid #111111;
+    background: #DDDDDD;
+    text-align: center;
+}
+
+h1, p
+{
+    margin: 15px;
+}
+
+#startbutton
+{
+    position: relative;
+    top: 200px;
+}
