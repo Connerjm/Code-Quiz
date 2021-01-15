@@ -57,7 +57,24 @@ function buildScoreBoard()
         scoreBoard.push(new HSEntry("AA", 0));//Using "AA" and 0 as the default.
 }
 
+function changetoScoreBoard()
+{
+    
+}
+
+function changetoQuiz()
+{
+
+}
+
+function changetoResults()
+{
+
+}
+
 // Attaching functions to listeners.
+
+document.getElementById("viewscores").onclick = changetoScoreBoard;
 
 // Calling a funtion to set up stuff.
 
