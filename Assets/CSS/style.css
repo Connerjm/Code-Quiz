@@ -14,16 +14,18 @@
 
 body
 {
-    font-family: Helvetica, sans-serif;
+    background-image: url("../Images/background.jpg");
+    line-height: 150%;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Styling the header. */
 header
 {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #111111;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #111;
     padding: 15px;
-    background: #EEEEEE;
+    background-image: linear-gradient(43deg, #0C8 0%, #0C4 100%);
 }
 
 #viewscores
@@ -34,17 +36,20 @@ header
 #timer
 {
     float: right;
+    display: none;
 }
 
 /* Styling the content in the panel. */
 #contentpanel
 {
     margin: auto;
+    box-shadow: 0 10px 25px 0 #0C6;
     width: 600px;
     height: 450px;
     padding: 15px;
-    border: 1px solid #111111;
-    background: #DDDDDD;
+    border: 1px solid #111;
+    background: #FFF;
+    font-size: larger;
     text-align: center;
 }
 
@@ -53,8 +58,21 @@ h1, p
     margin: 15px;
 }
 
+p
+{
+    line-height: 170%;
+    text-align: justify;
+}
+
 #startbutton
 {
     position: relative;
-    top: 200px;
+    top: 125px;
+    padding: 5px 16px;
+    font-size: larger;
+}
+
+.question
+{
+    font-family: 'JetBrains Mono', monospace;
 }
