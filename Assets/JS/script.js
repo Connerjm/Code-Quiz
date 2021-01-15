@@ -59,7 +59,8 @@ function buildScoreBoard()
 
 function changetoScoreBoard()
 {
-    
+    document.getElementById("welcomepage").style.display = "none";
+    document.getElementById("scoreboardpage").style.display = "block";
 }
 
 function changetoQuiz()

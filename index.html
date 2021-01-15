@@ -23,14 +23,18 @@
         <div id="timer">Timer: <span id="seconds"></span></div>
     </header>
 
-    <!-- Builds the main content panel that will be switched out dynamically to house the other pages of content. -->
-    <section class="contentpanel">
+    <!-- Builds the main content panels to house the pages of content. -->
+    <section class="contentpanel" id="welcomepage">
         <h1>Welcome to the Code Quiz!</h1>
         <hr>
         <p>
             Here you will be presented with a series of timed questions based on programming and upon completion, will recieve a score. Your score will be the amount of time left when you're done. Be weary, wrong answers will deduct time! But feel free to try as many times as you like.
         </p>
         <button id="startbutton">Start Quiz</button>
+    </section>
+
+    <section class="contentpanel" id="scoreboardpage">
+        <h1>High Scores</h1>
     </section>
 
     <!-- Connecting JS file. -->

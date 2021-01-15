@@ -53,6 +53,11 @@ header
     text-align: center;
 }
 
+#scoreboardpage
+{
+    display: none;
+}
+
 h1, p
 {
     margin: 15px;
