@@ -38,3 +38,4 @@ Project is created with:
 ## To Do
 
 - [ ] Add a difficulty setting.
+- [ ] Shuffle the questions and answers so the user can't just memorize position of correct answer.
