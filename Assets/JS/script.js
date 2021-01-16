@@ -1,35 +1,38 @@
-// Creating Object constructors.
+// Object Constructors.
 
-// A constructor for questions.
-function Question(text, answers)
+function Question(text, answers)// A constructor for questions.
 {
     this.questiontext = text;       //The question itself.
     this.questionanswers = answers; //An array of potential answers.
 }
 
-// A constructor for answers, both correct and false.
-function Answer(text, correct)
+function Answer(text, correct)// A constructor for answers, both correct and false.
 {
     this.answertext = text;     //The answer in string form.
     this.iscorrect = correct;   //Whether its correct or not.
 }
 
-// A constructor for highscore entries.
-function HSEntry(initials, score)
+function HSEntry(initials, score)// A constructor for highscore entries.
 {
     this.playerinitials = initials; //The 2 char string of initials.
     this.highscore = score;         //That players score.
 }
 
-// Creating Variables.
+// Page Elements
+
+var mainpage = document.getElementById("welcomepage");
+var quizpage = document.getElementById("quizpage");
+var resultspage = document.getElementById("resultspage");
+var scorepage = document.getElementById("scoreboardpage");
+
+// Variables.
 
 var questionsArray = [];//Array of Question objects.
 var scoreBoard = [];    //Array of high score entry objects.
 
-// Creating functions.
+// Main Functions.
 
-// Sets up the arrays needed.
-function initialize()
+function initialize()// Sets up the arrays needed.
 {
     buildQuestions();
     if (localStorage.getItem("scoreboard") !== null)
@@ -39,9 +42,9 @@ function initialize()
     renderScoreBoard();
 }
 
-// Helper function to build the question array.
-// A little ugly. Each line creates a question object with the answer and an array of answer objects and adds it to the questions array.
-function buildQuestions()
+// Helper Functions.
+
+function buildQuestions()//Builds the question array.
 {
     questionsArray.push(new Question("In which HTML tag would you put JavaScript?", [new Answer("<script>", true), new Answer("<body>", false), new Answer("<link>", false), new Answer("<meta>", false)]));
     questionsArray.push(new Question("Which part of the box model is the inner most?", [new Answer("Margin", false), new Answer("Border", false), new Answer("Padding", false), new Answer("Content", true)]));
@@ -51,17 +54,15 @@ function buildQuestions()
     questionsArray.push(new Question("The first element in an array is indexed at?", [new Answer("0", true), new Answer("1", false)]));
 }
 
-// Helper function to build the score board array.
-function buildScoreBoard()
+function buildScoreBoard()//Builds the score board array.
 {
     for (var i = 0; i < 10; i++)
         scoreBoard.push(new HSEntry("AA", 0));//Using "AA" and 0 as the default.
 }
 
-// Helper function to render the scoreboard on the table.
-function renderScoreBoard()
+function renderScoreBoard()//Renders the scores to the table on the score board page.
 {
-    var tableElement = document.getElementById("scoreboardpage").children[2].children[0];
+    var tableElement = scorepage.children[2].children[0];
     for (var i = 1; i < tableElement.children.length; i++)
     {
         tableElement.children[i].children[0].textContent = scoreBoard[i - 1].playerinitials;
@@ -69,29 +70,39 @@ function renderScoreBoard()
     }
 }
 
-// Function to change pages to score board.
-function changetoScoreBoard()
+function changetoScoreBoard()//Changes the page to the score board.
 {
-    document.getElementById("welcomepage").style.display = "none";
-    document.getElementById("scoreboardpage").style.display = "block";
+    mainpage.style.display = "none";
+    quizpage.style.display = "none";
+    resultspage.style.display = "none";
+    scorepage.style.display = "block";
 }
 
-// Function to change pages to the quiz.
-function changetoQuiz()
+function changetoQuiz()//Changes the page to the quiz.
 {
-
+    mainpage.style.display = "none";
+    quizpage.style.display = "block";
+    resultspage.style.display = "none";
+    scorepage.style.display = "none";
 }
 
-// Function to change the page to the results page.
-function changetoResults()
+function changetoResults()//Changes the page to the results screen.
 {
-
+    mainpage.style.display = "none";
+    quizpage.style.display = "none";
+    resultspage.style.display = "block";
+    scorepage.style.display = "none";
 }
 
 // Attaching functions to listeners.
 
 document.getElementById("viewscores").onclick = changetoScoreBoard;
+document.getElementById("startbutton").onclick = changetoQuiz;
+document.getElementById("nextquestion").onclick
+document.getElementById("submitscore").onclick
+document.getElementById("resultsquiz").onclick = changetoQuiz;
+document.getElementById("scoreboardquiz").onclick = changetoQuiz;
 
-// Calling a funtion to set up stuff.
+// Calling a funtion to get the ball rolling.
 
 initialize();
