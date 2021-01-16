@@ -59,6 +59,24 @@
         <h2 id="percent">0%</h2>
         <button class="btn" id="submitscore">Submit Score</button>
         <button class="btn" id="resultsquiz">Try Again</button>
+
+        <!-- Builds a pop-up for saving a users score. -->
+        <div id="modal">
+            <div id="modal-content">
+                <div><h2>Save your score.</h2></div>
+                <hr>
+                <form>
+                    <div>
+                        <label for="initials">Enter your initials</label>
+                        <input type="text" id="initials" name="initials" placeholder="AA" maxlength="2">
+                    </div>
+                </form>
+                <div>
+                    <button id="cancel">Cancel</button>
+                    <button id="submit">Submit</button>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Builds the scoreboard page. -->

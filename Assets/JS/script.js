@@ -24,6 +24,8 @@ var mainpage = document.getElementById("welcomepage");
 var quizpage = document.getElementById("quizpage");
 var resultspage = document.getElementById("resultspage");
 var scorepage = document.getElementById("scoreboardpage");
+var model = document.getElementById("model");
+var initialsbox = document.getElementById("initials");
 
 // Variables.
 
@@ -70,6 +72,12 @@ function renderScoreBoard()//Renders the scores to the table on the score board 
     }
 }
 
+function saveScoreBoard()//Saves the score board locally, after sorting it.
+{
+    scoreBoard.sort(function(a, b){return a.highscore - b.highscore});
+    localStorage.setItem("scoreboard", JSON.stringify(scoreBoard));
+}
+
 function changetoScoreBoard()//Changes the page to the score board.
 {
     mainpage.style.display = "none";
@@ -94,15 +102,29 @@ function changetoResults()//Changes the page to the results screen.
     scorepage.style.display = "none";
 }
 
+function openModal()
+{
+    modal.style.display  = "block";
+}
+
+function closeModal()
+{
+    modal.style.display  = "none";
+    initialsbox.value = "";
+}
+
 // Attaching functions to listeners.
 
 document.getElementById("viewscores").onclick = changetoScoreBoard;
 document.getElementById("startbutton").onclick = changetoQuiz;
 document.getElementById("nextquestion").onclick
-document.getElementById("submitscore").onclick
+document.getElementById("submitscore").onclick = openModal;
 document.getElementById("resultsquiz").onclick = changetoQuiz;
 document.getElementById("scoreboardquiz").onclick = changetoQuiz;
+document.getElementById("cancel").onclick = closeModal;
+document.getElementById("submit").onclick
 
 // Calling a funtion to get the ball rolling.
 
 initialize();
+changetoResults();
