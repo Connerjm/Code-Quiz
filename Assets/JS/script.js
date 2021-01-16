@@ -22,6 +22,7 @@ function HSEntry(initials, score)// A constructor for highscore entries.
 
 var mainpage = document.getElementById("welcomepage");
 var quizpage = document.getElementById("quizpage");
+var answersbox = document.getElementById("answerboxes");
 var resultspage = document.getElementById("resultspage");
 var scorepage = document.getElementById("scoreboardpage");
 var model = document.getElementById("model");
@@ -39,7 +40,7 @@ var time;
 
 // Main Functions.
 
-function initialize()// Sets up the arrays needed.
+function initialize()// Sets up the arrays and variables needed.
 {
     buildQuestions();
     maxscore = questionsArray.length;
@@ -52,6 +53,29 @@ function initialize()// Sets up the arrays needed.
         buildScoreBoard();
 
     renderScoreBoard();
+}
+
+function beginquiz()//Starts the quiz.
+{
+    shufflefull();
+    //nextquestion()
+    //Start timer.
+}
+
+function nextquestion(i)//Puts the new question and answers in the page elements.
+{
+    //Get a question from the array.
+    var aquestion = questionsArray[i];
+    //Populate the question.
+    quizpage.children[0].textContent = aquestion.questiontext;
+    //Build the button divs and put the answers in them.
+    answersbox.innerHTML = "";
+    for (var i = 0; i < aquestion.questionanswers.length; i++)
+    {
+        var newdiv = document.createElement('div.answer.mono');
+        newdiv.textContent = aquestion.questionanswers[i];
+        answersbox.appendChild(newdiv);
+    }
 }
 
 // Helper Functions.
@@ -103,6 +127,31 @@ function saveScoreBoard()//Saves the score board locally, after sorting it.
 function percentage()//Returns the percentage score.
 {
     return Math.floor((userscore / maxscore) * 100);
+}
+
+function shufflefull()//Shuffles all the questions as well as the answers for each.
+{
+    arrayshuffle(questionsArray);
+    for (var i = 0; i < questionsArray.length; i++)
+    {
+        var singlequestion = questionsArray[i];
+        arrayshuffle(singlequestion.questionanswers);
+    }
+}
+
+function arrayshuffle(array)//Shuffles an array. Using Fisher-Yates shuffle as found on stack overflow.
+{
+    var currentindex = array.length, tempValue, randomindex;
+
+    while (0 !== currentindex)
+    {
+        randomindex = Math.floor(Math.random() * currentindex);
+        currentindex -= 1;
+
+        tempValue = array[currentindex];
+        array[currentindex] = array[randomindex];
+        array[randomindex] = tempValue;
+    }
 }
 
 function changetoScoreBoard()//Changes the page to the score board.
