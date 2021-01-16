@@ -19,6 +19,34 @@ body
     font-family: 'Roboto', sans-serif;
 }
 
+h1, h3, p
+{
+    margin: 15px;
+}
+
+p
+{
+    line-height: 170%;
+    text-align: justify;
+}
+
+button
+{
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn
+{
+    font-size: larger;
+    padding: 5px 16px;
+}
+
+/* Class to give elements the custom font. */
+.mono
+{
+    font-family: 'JetBrains Mono', monospace;
+}
+
 /* Styling the header. */
 header
 {
@@ -39,7 +67,7 @@ header
     display: none;
 }
 
-/* Styling the content in the panel. */
+/* Styling the content in the main panel. */
 .contentpanel
 {
     margin: auto;
@@ -53,72 +81,17 @@ header
     text-align: center;
 }
 
-#resultspage
-{
-    display: block;
-}
-
-#resultspage p
-{
-    text-align: center;
-    font-size: larger;
-}
-
-#percent
-{
-    font-size: 600%;
-    padding: 100px;
-    text-shadow: 5px 5px 3px #0C6;
-}
-
-#scoreboardpage
-{
-    display: block;
-}
-
-h1, h3, p
-{
-    margin: 15px;
-}
-
-p
-{
-    line-height: 170%;
-    text-align: justify;
-}
-
-button
-{
-    font-family: 'Roboto', sans-serif;
-}
-
+/* Welcome page styling */
 #startbutton
 {
     position: relative;
     top: 70px;
 }
 
-.mono
+/* Quiz page styling. */
+#quizpage
 {
-    font-family: 'JetBrains Mono', monospace;
-}
-
-table
-{
-    width: 90%;
-    margin: 20px auto;
-}
-
-table, th, td
-{
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-.btn
-{
-    font-size: larger;
-    padding:  5px 16px;
+    display: none;
 }
 
 .answer
@@ -134,10 +107,9 @@ table, th, td
     background: #0C6;
 }
 
-#nextquestion
+#correctorwrongbox
 {
-    float: right;
-    margin: 15px;
+    display: none;
 }
 
 #correctorwrong
@@ -146,7 +118,45 @@ table, th, td
     font-style: italic;
 }
 
-#correctorwrongbox
+#nextquestion
+{
+    float: right;
+    margin: 15px;
+}
+
+/* Results page styling. */
+#resultspage
 {
     display: none;
+}
+
+#resultspage p
+{
+    text-align: center;
+    font-size: larger;
+}
+
+#percent
+{
+    font-size: 600%;
+    padding: 100px;
+    text-shadow: 5px 5px 3px #0C6;
+}
+
+/* Scoreboard page styling. */
+#scoreboardpage
+{
+    display: none;
+}
+
+table
+{
+    width: 90%;
+    margin: 20px auto;
+}
+
+table, th, td
+{
+    border: 1px solid black;
+    border-collapse: collapse;
 }
