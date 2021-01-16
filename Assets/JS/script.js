@@ -84,6 +84,16 @@ function renderScoreBoard()//Renders the scores to the table on the score board 
     }
 }
 
+function addScoreBoardEntry()//Adds a new entry to the high score list.
+{
+    if (initialsbox.value.length === 2)
+    {
+        scoreBoard.push(new HSEntry(initialsbox.value, userscore));
+        closeModal();
+        saveScoreBoard();
+    }
+}
+
 function saveScoreBoard()//Saves the score board locally, after sorting it.
 {
     scoreBoard.sort(function(a, b){return a.highscore - b.highscore});
@@ -119,12 +129,12 @@ function changetoResults()//Changes the page to the results screen.
     scorepage.style.display = "none";
 }
 
-function openModal()
+function openModal()//Opens the pop up.
 {
     modal.style.display  = "block";
 }
 
-function closeModal()
+function closeModal()//Closes the pop up.
 {
     modal.style.display  = "none";
     initialsbox.value = "";
@@ -139,7 +149,7 @@ document.getElementById("submitscore").onclick = openModal;
 document.getElementById("resultsquiz").onclick = changetoQuiz;
 document.getElementById("scoreboardquiz").onclick = changetoQuiz;
 document.getElementById("cancel").onclick = closeModal;
-document.getElementById("submit").onclick
+document.getElementById("submit").onclick = addScoreBoardEntry;
 
 // Calling a funtion to get the ball rolling.
 
