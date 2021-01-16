@@ -34,6 +34,8 @@ var scoreBoard = [];    //Array of high score entry objects.
 
 var userscore;
 var maxscore;
+var timeperquestion = 10;
+var time;
 
 // Main Functions.
 
@@ -41,6 +43,8 @@ function initialize()// Sets up the arrays needed.
 {
     buildQuestions();
     maxscore = questionsArray.length;
+    maxscore = timeperquestion * questionsArray.length;
+    time = maxscore * 1000;
 
     if (localStorage.getItem("scoreboard") !== null)
         scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
