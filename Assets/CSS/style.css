@@ -58,12 +58,25 @@ header
     display: block;
 }
 
+#resultspage p
+{
+    text-align: center;
+    font-size: larger;
+}
+
+#percent
+{
+    font-size: 600%;
+    padding: 100px;
+    text-shadow: 5px 5px 3px #0C6;
+}
+
 #scoreboardpage
 {
     display: block;
 }
 
-h1, p
+h1, h3, p
 {
     margin: 15px;
 }
@@ -83,8 +96,6 @@ button
 {
     position: relative;
     top: 70px;
-    padding: 5px 16px;
-    font-size: larger;
 }
 
 .question
@@ -104,7 +115,7 @@ table, th, td
     border-collapse: collapse;
 }
 
-#quiz
+.btn
 {
     font-size: larger;
     padding:  5px 16px;

@@ -33,11 +33,22 @@
         <p>
             Good luck, have fun!!
         </p>
-        <button id="startbutton">Start Quiz</button>
+        <button class="btn" id="startbutton">Start Quiz</button>
     </section>
 
+    <section class="contentpanel" id="quizpage">
+        <h3>This is a question placeholder.</h3>
+        <hr>
+    </section>
+
+    <!-- Builds the results page that is displayed after the quiz. -->
     <section class="contentpanel" id="resultspage">
         <h1>Results</h1>
+        <hr>
+        <p>You scored <span id="score">0</span> out of <span id="total">0</span>. Which is </p>
+        <h2 id="percent">0%</h2>
+        <button class="btn" id="submitscore">Submit Score</button>
+        <button class="btn" id="resultsquiz">Try Again</button>
     </section>
 
     <!-- Builds the scoreboard page. -->
@@ -86,7 +97,7 @@
                 <td></td>
             </tr>
         </table>
-        <button id="quiz">Take Quiz</button>
+        <button class="btn" id="scoreboardquiz">Take Quiz</button>
     </section>
 
     <!-- Connecting JS file. -->
