@@ -57,8 +57,9 @@ function initialize()// Sets up the arrays and variables needed.
 
 function beginquiz()//Starts the quiz.
 {
+    changetoQuiz();
     shufflefull();
-    //nextquestion()
+    nextquestion(0);
     //Start timer.
 }
 
@@ -72,8 +73,10 @@ function nextquestion(i)//Puts the new question and answers in the page elements
     answersbox.innerHTML = "";
     for (var i = 0; i < aquestion.questionanswers.length; i++)
     {
-        var newdiv = document.createElement('div.answer.mono');
-        newdiv.textContent = aquestion.questionanswers[i];
+        var newdiv = document.createElement('div');
+        newdiv.classList.add("answer");
+        newdiv.classList.add("mono");
+        newdiv.textContent = aquestion.questionanswers[i].answertext;
         answersbox.appendChild(newdiv);
     }
 }
@@ -192,7 +195,7 @@ function closeModal()//Closes the pop up.
 // Attaching functions to listeners.
 
 document.getElementById("viewscores").onclick = changetoScoreBoard;
-document.getElementById("startbutton").onclick = changetoQuiz;
+document.getElementById("startbutton").onclick = beginquiz;
 document.getElementById("nextquestion").onclick
 document.getElementById("submitscore").onclick = openModal;
 document.getElementById("resultsquiz").onclick = changetoQuiz;

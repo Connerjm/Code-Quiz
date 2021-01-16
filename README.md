@@ -37,5 +37,7 @@ Project is created with:
 
 ## To Do
 
+- [ ] Add Timer.
+- [ ] Add answer div listeners.
 - [ ] Add a difficulty setting.
-- [ ] Shuffle the questions and answers so the user can't just memorize position of correct answer.
+- [x] Shuffle the questions and answers so the user can't just memorize position of correct answer.
