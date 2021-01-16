@@ -32,15 +32,21 @@ var initialsbox = document.getElementById("initials");
 var questionsArray = [];//Array of Question objects.
 var scoreBoard = [];    //Array of high score entry objects.
 
+var userscore;
+var maxscore;
+
 // Main Functions.
 
 function initialize()// Sets up the arrays needed.
 {
     buildQuestions();
+    maxscore = questionsArray.length;
+
     if (localStorage.getItem("scoreboard") !== null)
         scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
     else
         buildScoreBoard();
+
     renderScoreBoard();
 }
 
@@ -48,6 +54,8 @@ function initialize()// Sets up the arrays needed.
 
 function buildQuestions()//Builds the question array.
 {
+    //Just a heads up, I know this is ugly.
+    //In short, this creates a new question with its answers and pushes it onto the array.
     questionsArray.push(new Question("In which HTML tag would you put JavaScript?", [new Answer("<script>", true), new Answer("<body>", false), new Answer("<link>", false), new Answer("<meta>", false)]));
     questionsArray.push(new Question("Which part of the box model is the inner most?", [new Answer("Margin", false), new Answer("Border", false), new Answer("Padding", false), new Answer("Content", true)]));
     questionsArray.push(new Question("How does one access a property of an object?", [new Answer("object.property", false), new Answer("object[\"property\"]", false), new Answer("Both", true)]));
@@ -76,6 +84,11 @@ function saveScoreBoard()//Saves the score board locally, after sorting it.
 {
     scoreBoard.sort(function(a, b){return a.highscore - b.highscore});
     localStorage.setItem("scoreboard", JSON.stringify(scoreBoard));
+}
+
+function percentage()//Returns the percentage score.
+{
+    return Math.floor((userscore / maxscore) * 100);
 }
 
 function changetoScoreBoard()//Changes the page to the score board.
@@ -127,4 +140,3 @@ document.getElementById("submit").onclick
 // Calling a funtion to get the ball rolling.
 
 initialize();
-changetoResults();
