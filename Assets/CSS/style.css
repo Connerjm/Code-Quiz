@@ -53,9 +53,14 @@ header
     text-align: center;
 }
 
+#resultspage
+{
+    display: block;
+}
+
 #scoreboardpage
 {
-    display: none;
+    display: block;
 }
 
 h1, p
@@ -85,4 +90,22 @@ button
 .question
 {
     font-family: 'JetBrains Mono', monospace;
+}
+
+table
+{
+    width: 90%;
+    margin: 20px auto;
+}
+
+table, th, td
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#quiz
+{
+    font-size: larger;
+    padding:  5px 16px;
 }

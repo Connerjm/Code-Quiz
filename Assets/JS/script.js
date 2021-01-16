@@ -32,10 +32,11 @@ var scoreBoard = [];    //Array of high score entry objects.
 function initialize()
 {
     buildQuestions();
-    buildScoreBoard();
-
-    //TODO: DELETE THIS
-    console.log(questionsArray);
+    if (localStorage.getItem("scoreboard") !== null)
+        scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
+    else
+        buildScoreBoard();
+    renderScoreBoard();
 }
 
 // Helper function to build the question array.
@@ -57,17 +58,31 @@ function buildScoreBoard()
         scoreBoard.push(new HSEntry("AA", 0));//Using "AA" and 0 as the default.
 }
 
+// Helper function to render the scoreboard on the table.
+function renderScoreBoard()
+{
+    var tableElement = document.getElementById("scoreboardpage").children[2].children[0];
+    for (var i = 1; i < tableElement.children.length; i++)
+    {
+        tableElement.children[i].children[0].textContent = scoreBoard[i - 1].playerinitials;
+        tableElement.children[i].children[1].textContent = scoreBoard[i - 1].highscore;
+    }
+}
+
+// Function to change pages to score board.
 function changetoScoreBoard()
 {
     document.getElementById("welcomepage").style.display = "none";
     document.getElementById("scoreboardpage").style.display = "block";
 }
 
+// Function to change pages to the quiz.
 function changetoQuiz()
 {
 
 }
 
+// Function to change the page to the results page.
 function changetoResults()
 {
 
