@@ -98,7 +98,7 @@ button
     top: 70px;
 }
 
-.question
+.mono
 {
     font-family: 'JetBrains Mono', monospace;
 }
@@ -119,4 +119,34 @@ table, th, td
 {
     font-size: larger;
     padding:  5px 16px;
+}
+
+.answer
+{
+    width: 66%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+}
+
+.answer:hover
+{
+    background: #0C6;
+}
+
+#nextquestion
+{
+    float: right;
+    margin: 15px;
+}
+
+#correctorwrong
+{
+    float: left;
+    font-style: italic;
+}
+
+#correctorwrongbox
+{
+    display: none;
 }
