@@ -27,6 +27,7 @@ var resultspage = document.getElementById("resultspage");
 var scorepage = document.getElementById("scoreboardpage");
 var model = document.getElementById("model");
 var initialsbox = document.getElementById("initials");
+var correctorwrongbox = document.getElementById("correctorwrongbox");
 
 // Variables.
 
@@ -37,6 +38,8 @@ var userscore;
 var maxscore;
 var timeperquestion = 10;
 var time;
+var interval;
+var currentquestion;
 
 // Main Functions.
 
@@ -44,8 +47,7 @@ function initialize()// Sets up the arrays and variables needed.
 {
     buildQuestions();
     maxscore = questionsArray.length;
-    maxscore = timeperquestion * questionsArray.length;
-    time = maxscore * 1000;
+    time = timeperquestion * questionsArray.length;
 
     if (localStorage.getItem("scoreboard") !== null)
         scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
@@ -57,16 +59,21 @@ function initialize()// Sets up the arrays and variables needed.
 
 function beginquiz()//Starts the quiz.
 {
+    userscore = 0;
     changetoQuiz();
     shufflefull();
-    nextquestion(0);
-    //Start timer.
+    currentquestion = 0;
+    nextquestion();
+    document.getElementById("nextquestion").onclick = nextquestion;
+    document.getElementById("nextquestion").textContent = "Next";
+    //Start interval.
 }
 
-function nextquestion(i)//Puts the new question and answers in the page elements.
+function nextquestion()//Puts the new question and answers in the page elements.
 {
+    correctorwrongbox.style.display = "none";
     //Get a question from the array.
-    var aquestion = questionsArray[i];
+    var aquestion = questionsArray[currentquestion];
     //Populate the question.
     quizpage.children[0].textContent = aquestion.questiontext;
     //Build the button divs and put the answers in them.
@@ -76,8 +83,17 @@ function nextquestion(i)//Puts the new question and answers in the page elements
         var newdiv = document.createElement('div');
         newdiv.classList.add("answer");
         newdiv.classList.add("mono");
+        newdiv.setAttribute("data-correct", aquestion.questionanswers[i].iscorrect);
         newdiv.textContent = aquestion.questionanswers[i].answertext;
         answersbox.appendChild(newdiv);
+    }
+    //Attaches the listener.
+    document.addEventListener("click", answerclick);
+    currentquestion++;
+    if (currentquestion === questionsArray.length)
+    {
+        document.getElementById("nextquestion").onclick = changetoResults;
+        document.getElementById("nextquestion").textContent = "Finish";
     }
 }
 
@@ -111,11 +127,12 @@ function renderScoreBoard()//Renders the scores to the table on the score board 
     }
 }
 
-function addScoreBoardEntry()//Adds a new entry to the high score list.
+function addScoreBoardEntry(event)//Adds a new entry to the high score list.
 {
+    event.preventDefault();
     if (initialsbox.value.length === 2)
     {
-        scoreBoard.push(new HSEntry(initialsbox.value, userscore));
+        scoreBoard.push(new HSEntry(initialsbox.value.toUpperCase(), userscore));
         closeModal();
         saveScoreBoard();
     }
@@ -157,6 +174,26 @@ function arrayshuffle(array)//Shuffles an array. Using Fisher-Yates shuffle as f
     }
 }
 
+function answerclick(event)//This is called from the answer buttons.
+{
+    var element = event.target;
+    if (element.classList[0] === "answer")
+    {
+        if (element.getAttribute("data-correct") === "true")
+        {
+            correctorwrongbox.children[1].textContent = "Correct";
+            userscore++;
+        }
+        else
+        {
+            correctorwrongbox.children[1].textContent = "Wrong";
+            time -= 5;
+        }
+        correctorwrongbox.style.display = "block";
+        document.removeEventListener("click", answerclick);
+    }
+}
+
 function changetoScoreBoard()//Changes the page to the score board.
 {
     mainpage.style.display = "none";
@@ -175,6 +212,9 @@ function changetoQuiz()//Changes the page to the quiz.
 
 function changetoResults()//Changes the page to the results screen.
 {
+    document.getElementById("score").textContent = userscore;
+    document.getElementById("total").textContent = maxscore;
+    document.getElementById("percent").textContent = (percentage() + "%");
     mainpage.style.display = "none";
     quizpage.style.display = "none";
     resultspage.style.display = "block";
@@ -196,10 +236,10 @@ function closeModal()//Closes the pop up.
 
 document.getElementById("viewscores").onclick = changetoScoreBoard;
 document.getElementById("startbutton").onclick = beginquiz;
-document.getElementById("nextquestion").onclick
+document.getElementById("nextquestion").onclick = nextquestion;
 document.getElementById("submitscore").onclick = openModal;
-document.getElementById("resultsquiz").onclick = changetoQuiz;
-document.getElementById("scoreboardquiz").onclick = changetoQuiz;
+document.getElementById("resultsquiz").onclick = beginquiz;
+document.getElementById("scoreboardquiz").onclick = beginquiz;
 document.getElementById("cancel").onclick = closeModal;
 document.getElementById("submit").onclick = addScoreBoardEntry;
 
