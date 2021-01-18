@@ -18,19 +18,34 @@ function HSEntry(initials, score)// A constructor for highscore entries.
     this.highscore = score;         //That players score.
 }
 
-// Page Elements
+// HTML Elements
 
+// The pages.
 var mainpage = document.getElementById("welcomepage");
 var quizpage = document.getElementById("quizpage");
-var answersbox = document.getElementById("answerboxes");
 var resultspage = document.getElementById("resultspage");
 var scorepage = document.getElementById("scoreboardpage");
+
+// The boxes. (That get hidden or shown depending.)
 var model = document.getElementById("model");
 var initialsbox = document.getElementById("initials");
+var answersbox = document.getElementById("answerboxes");
 var correctorwrongbox = document.getElementById("correctorwrongbox");
+
+// The buttons.
+var viewscoresbutton = document.getElementById("viewscores");
+var startquizbutton = document.getElementById("startbutton");
+var nextquestionbutton = document.getElementById("nextquestion");
+var submitscorebutton = document.getElementById("submitscore");
+var startquizfromresultsbutton = document.getElementById("resultsquiz");
+var modalcancelbutton = document.getElementById("cancel");
+var modalsubmitbutton = document.getElementById("submit");
+var startquizfromscoreboardbutton = document.getElementById("scoreboardquiz");
+
 
 // Variables.
 
+//Arrays
 var questionsArray = [];//Array of Question objects.
 var scoreBoard = [];    //Array of high score entry objects.
 
@@ -263,14 +278,14 @@ function closeModal()//Closes the pop up.
 
 // Attaching functions to listeners.
 
-document.getElementById("viewscores").onclick = changetoScoreBoard;
-document.getElementById("startbutton").onclick = beginquiz;
-document.getElementById("nextquestion").onclick = nextquestion;
-document.getElementById("submitscore").onclick = openModal;
-document.getElementById("resultsquiz").onclick = beginquiz;
-document.getElementById("scoreboardquiz").onclick = beginquiz;
-document.getElementById("cancel").onclick = closeModal;
-document.getElementById("submit").onclick = addScoreBoardEntry;
+viewscoresbutton.onclick = changetoScoreBoard;
+startquizbutton.onclick = beginquiz;
+nextquestionbutton.onclick = nextquestion;
+submitscorebutton.onclick = openModal;
+startquizfromresultsbutton.onclick = beginquiz;
+modalcancelbutton.onclick = closeModal;
+modalsubmitbutton.onclick = addScoreBoardEntry;
+startquizfromscoreboardbutton.onclick = beginquiz;
 
 // Calling a funtion to get the ball rolling.
 

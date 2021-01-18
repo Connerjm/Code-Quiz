@@ -7,6 +7,7 @@
 - [Launch](#launch)
 - [Images](#Images)
 - [To Do](#to-do)
+- [Issues](#issues)
 
 ## Introduction
 
@@ -37,9 +38,12 @@ Project is created with:
 
 ## To Do
 
-- [x] Add the timer.
-- [x] Save and restore scoreboard.
-- [x] Add answer div listeners.
 - [ ] Add a difficulty setting.
 - [x] Shuffle the questions and answers so the user can't just memorize position of correct answer.
+- [ ] Add a prefacing countdown before the quiz timer starts.
 - [ ] Clean up this damn JS code.
+
+## Issues
+
+- If the user clicks the highscore button during the quiz, the timer doesn't stop and can make the quiz wonky.
+- Something about the loading when the application initially opens causes the elements to pop since they show up before some of the CSS is applied.
