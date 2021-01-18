@@ -63,10 +63,11 @@ function beginquiz()//Starts the quiz.
     changetoQuiz();
     shufflefull();
     currentquestion = 0;
+    time = timeperquestion * questionsArray.length;
     nextquestion();
     document.getElementById("nextquestion").onclick = nextquestion;
     document.getElementById("nextquestion").textContent = "Next";
-    //Start interval.
+    startGameTimer();
 }
 
 function nextquestion()//Puts the new question and answers in the page elements.
@@ -194,6 +195,28 @@ function answerclick(event)//This is called from the answer buttons.
     }
 }
 
+function startGameTimer()//Starts the game timer.
+{
+    var clock = document.getElementById("seconds");
+    clock.textContent = time;
+    document.getElementById("timer").style.display = "block";
+    interval = setInterval(function()
+    {
+        clock.textContent = time;
+        time--;
+
+        if (time <= 0)
+        {
+            changetoResults();
+        }
+    }, 1000);
+}
+
+function stopGameTimer()//Stops the game timer. Will be called if the user finishes before time runs out.
+{
+    clearInterval(interval);
+}
+
 function changetoScoreBoard()//Changes the page to the score board.
 {
     mainpage.style.display = "none";
@@ -212,6 +235,7 @@ function changetoQuiz()//Changes the page to the quiz.
 
 function changetoResults()//Changes the page to the results screen.
 {
+    stopGameTimer();
     document.getElementById("score").textContent = userscore;
     document.getElementById("total").textContent = maxscore;
     document.getElementById("percent").textContent = (percentage() + "%");
