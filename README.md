@@ -47,3 +47,4 @@ Project is created with:
 
 - If the user clicks the highscore button during the quiz, the timer doesn't stop and can make the quiz wonky.
 - Something about the loading when the application initially opens causes the elements to pop since they show up before some of the CSS is applied.
+- Once the timer is shown, I never hide it again.

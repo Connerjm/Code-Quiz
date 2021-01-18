@@ -42,6 +42,9 @@ var modalcancelbutton = document.getElementById("cancel");
 var modalsubmitbutton = document.getElementById("submit");
 var startquizfromscoreboardbutton = document.getElementById("scoreboardquiz");
 
+// Other bits.
+var countdownclock = document.getElementById("seconds");
+
 
 // Variables.
 
@@ -80,8 +83,8 @@ function beginquiz()//Starts the quiz.
     currentquestion = 0;
     time = timeperquestion * questionsArray.length;
     nextquestion();
-    document.getElementById("nextquestion").onclick = nextquestion;
-    document.getElementById("nextquestion").textContent = "Next";
+    nextquestionbutton.onclick = nextquestion;
+    nextquestionbutton.textContent = "Next";
     startGameTimer();
 }
 
@@ -108,8 +111,8 @@ function nextquestion()//Puts the new question and answers in the page elements.
     currentquestion++;
     if (currentquestion === questionsArray.length)
     {
-        document.getElementById("nextquestion").onclick = changetoResults;
-        document.getElementById("nextquestion").textContent = "Finish";
+        nextquestionbutton.onclick = changetoResults;
+        nextquestionbutton.textContent = "Finish";
     }
 }
 
@@ -215,12 +218,11 @@ function answerclick(event)//This is called from the answer buttons.
 
 function startGameTimer()//Starts the game timer.
 {
-    var clock = document.getElementById("seconds");
-    clock.textContent = time;
+    countdownclock.textContent = time;
     document.getElementById("timer").style.display = "block";
     interval = setInterval(function()
     {
-        clock.textContent = time;
+        countdownclock.textContent = time;
         time--;
 
         if (time <= -1)
@@ -257,7 +259,7 @@ function changetoResults()//Changes the page to the results screen.
     stopGameTimer();
     document.getElementById("score").textContent = userscore;
     document.getElementById("total").textContent = maxscore;
-    document.getElementById("percent").textContent = (percentage() + "%");
+    document.getElementById("percent").textContent = (percentage() + "% with a score of " + time);
     mainpage.style.display = "none";
     quizpage.style.display = "none";
     resultspage.style.display = "block";
