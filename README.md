@@ -36,12 +36,25 @@ Project is created with:
 
 ## Images
 
+The welcome page.
+![Welcome](Assets/Images/Welcome.png)
+
+Currently taking the quiz.
+![Quiz](Assets/Images/Quiz.png)
+
+End of quiz results.
+![Finish](Assets/Images/Finish.png)
+
+Viewing the Score Board
+![Scoreboard](Assets/Images/Scoreboard.png)
+
 ## To Do
 
 - [ ] Add a difficulty setting.
 - [x] Shuffle the questions and answers so the user can't just memorize position of correct answer.
 - [ ] Add a prefacing countdown before the quiz timer starts.
 - [ ] Clean up this damn JS code.
+- [ ] Force the characters in the initial submission box to be capitals.
 
 ## Issues
 

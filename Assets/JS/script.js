@@ -45,18 +45,14 @@ var startquizfromscoreboardbutton = document.getElementById("scoreboardquiz");
 // Other bits.
 var countdownclock = document.getElementById("seconds");
 
-
 // Variables.
 
 //Arrays
 var questionsArray = [];//Array of Question objects.
 var scoreBoard = [];    //Array of high score entry objects.
 
-var userscore;
-var maxscore;
-var timeperquestion = 10;
-var time;
-var interval;
+var userscore, maxscore;
+var timeperquestion = 10, time, interval;
 var currentquestion;
 
 // Main Functions.
@@ -279,7 +275,7 @@ function closeModal()//Closes the pop up.
 }
 
 // Attaching functions to listeners.
-
+{
 viewscoresbutton.onclick = changetoScoreBoard;
 startquizbutton.onclick = beginquiz;
 nextquestionbutton.onclick = nextquestion;
@@ -288,6 +284,7 @@ startquizfromresultsbutton.onclick = beginquiz;
 modalcancelbutton.onclick = closeModal;
 modalsubmitbutton.onclick = addScoreBoardEntry;
 startquizfromscoreboardbutton.onclick = beginquiz;
+}
 
 // Calling a funtion to get the ball rolling.
 
