@@ -14,11 +14,11 @@ This is the fourth homework in the bootcamp. My task will be to create a simple 
 
 The acceptance criteria is as follows:
 
-- [ ] Upon clicking the start button, a timer starts and the first question will be revealed.
-- [ ] After answering a question, another one will be presented.
-- [ ] If the answer is incorrect, time is subtracted from the clock.
-- [ ] Upon answering all questions or the time runs out, the game is over.
-- [ ] After the game, the user may save their initials and score.
+- [x] Upon clicking the start button, a timer starts and the first question will be revealed.
+- [x] After answering a question, another one will be presented.
+- [x] If the answer is incorrect, time is subtracted from the clock.
+- [x] Upon answering all questions or the time runs out, the game is over.
+- [x] After the game, the user may save their initials and score.
 
 ## Technologies
 
@@ -37,8 +37,8 @@ Project is created with:
 
 ## To Do
 
-- [ ] Add the timer.
-- [ ] Save and restore scoreboard.
+- [x] Add the timer.
+- [x] Save and restore scoreboard.
 - [x] Add answer div listeners.
 - [ ] Add a difficulty setting.
 - [x] Shuffle the questions and answers so the user can't just memorize position of correct answer.

@@ -120,6 +120,7 @@ function buildScoreBoard()//Builds the score board array.
 
 function renderScoreBoard()//Renders the scores to the table on the score board page.
 {
+    scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
     var tableElement = scorepage.children[2].children[0];
     for (var i = 1; i < tableElement.children.length; i++)
     {
@@ -133,15 +134,17 @@ function addScoreBoardEntry(event)//Adds a new entry to the high score list.
     event.preventDefault();
     if (initialsbox.value.length === 2)
     {
-        scoreBoard.push(new HSEntry(initialsbox.value.toUpperCase(), userscore));
+        scoreBoard.push(new HSEntry(initialsbox.value.toUpperCase(), time));
         closeModal();
         saveScoreBoard();
+        renderScoreBoard();
+        changetoScoreBoard();
     }
 }
 
 function saveScoreBoard()//Saves the score board locally, after sorting it.
 {
-    scoreBoard.sort(function(a, b){return a.highscore - b.highscore});
+    scoreBoard = scoreBoard.sort(function(a, b){return b.highscore - a.highscore});
     localStorage.setItem("scoreboard", JSON.stringify(scoreBoard));
 }
 
@@ -205,7 +208,7 @@ function startGameTimer()//Starts the game timer.
         clock.textContent = time;
         time--;
 
-        if (time <= 0)
+        if (time <= -1)
         {
             changetoResults();
         }
@@ -219,6 +222,7 @@ function stopGameTimer()//Stops the game timer. Will be called if the user finis
 
 function changetoScoreBoard()//Changes the page to the score board.
 {
+    renderScoreBoard();
     mainpage.style.display = "none";
     quizpage.style.display = "none";
     resultspage.style.display = "none";
@@ -245,8 +249,9 @@ function changetoResults()//Changes the page to the results screen.
     scorepage.style.display = "none";
 }
 
-function openModal()//Opens the pop up.
+function openModal(event)//Opens the pop up.
 {
+    event.preventDefault();
     modal.style.display  = "block";
 }
 
