@@ -61,7 +61,6 @@ function initialize()// Sets up the arrays and variables needed.
 {
     buildQuestions();
     maxscore = questionsArray.length;
-    time = timeperquestion * questionsArray.length;
 
     if (localStorage.getItem("scoreboard") !== null)
         scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
@@ -73,11 +72,12 @@ function initialize()// Sets up the arrays and variables needed.
 
 function beginquiz()//Starts the quiz.
 {
+    //Reset variables.
     userscore = 0;
-    changetoQuiz();
-    shufflefull();
     currentquestion = 0;
     time = timeperquestion * questionsArray.length;
+    changetoQuiz();
+    shufflefull();
     nextquestion();
     nextquestionbutton.onclick = nextquestion;
     nextquestionbutton.textContent = "Next";
@@ -236,6 +236,8 @@ function stopGameTimer()//Stops the game timer. Will be called if the user finis
 function changetoScoreBoard()//Changes the page to the score board.
 {
     renderScoreBoard();
+    document.getElementById("timer").style.display = "none";
+    stopGameTimer();
     mainpage.style.display = "none";
     quizpage.style.display = "none";
     resultspage.style.display = "none";
@@ -278,7 +280,6 @@ function closeModal()//Closes the pop up.
 {
 viewscoresbutton.onclick = changetoScoreBoard;
 startquizbutton.onclick = beginquiz;
-nextquestionbutton.onclick = nextquestion;
 submitscorebutton.onclick = openModal;
 startquizfromresultsbutton.onclick = beginquiz;
 modalcancelbutton.onclick = closeModal;
