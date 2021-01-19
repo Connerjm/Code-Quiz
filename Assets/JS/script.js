@@ -134,7 +134,8 @@ function buildScoreBoard()//Builds the score board array.
 
 function renderScoreBoard()//Renders the scores to the table on the score board page.
 {
-    scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
+    if (localStorage.getItem("scoreboard") !== null)
+        scoreBoard = JSON.parse(localStorage.getItem("scoreboard"));
     var tableElement = scorepage.children[2].children[0];
     for (var i = 1; i < tableElement.children.length; i++)
     {
